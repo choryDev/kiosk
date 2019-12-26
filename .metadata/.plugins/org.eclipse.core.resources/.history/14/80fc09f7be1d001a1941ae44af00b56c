@@ -1,0 +1,54 @@
+package term2018;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Ex01 extends JFrame {
+	public Ex01() {
+		super("원을 3초 간격으로 랜덤한 위치로 이동시키는 스레드");
+		
+		add(new CirclePanel());
+		setSize(500, 500);
+		setVisible(true);
+//		--이후 생략--
+	}
+	class CirclePanel extends JPanel implements Runnable {
+		private int x = 100; // 원이 그려지는 위치
+		private int y = 100;
+		public CirclePanel() {
+			this.addMouseListener(new MouseAdapter() {
+				private Thread th = null;
+				public void mousePressed(MouseEvent e) {
+					if(th != null) { // ① 스레드가 아직 만들어지지 않았을 때만 스레드 생성
+						th = new Thread(CirclePanel.this);
+			            th.start();  // ② 스레드 시작
+			            run();
+					}
+				}
+			});
+			
+		}
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			g.setColor(Color.RED);
+			g.drawOval(x, y, 50, 50); // (x, y)에서 50x50 크기 원
+		}
+		public void run() {
+			while(true) {
+				try {
+					Thread.sleep(3); // ③ 3초동안 잠자기
+				} catch (InterruptedException e) { return; }
+				
+				// 원이 그려지는 위치를 랜덤하게 갱신
+				x = (int)(Math.random() * this.getWidth()); // ④ 패널의 범위 내에서 가로선택
+				System.out.println((int)(Math.random() * this.getWidth()));
+				y = (int)(Math.random() * this.getHeight()); // ⑤ 패널의 범위 내에서 세로선택
+				repaint();
+			}
+		}		
+	}
+	public static void main(String[] args) {
+		new Ex01();
+	}
+}

@@ -1,0 +1,91 @@
+package display;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import common.CommonMethod;
+import common.MyColor;
+import common.SetLanguage;
+import component.MyBorderButton;
+import main.Main;
+
+public class IntroDisplay extends JPanel {
+	
+	public IntroDisplay(){
+		setBackground(MyColor.subColor);
+		
+		setLayout(new GridLayout(3, 1));
+		
+		JPanel header = new JPanel();
+		header.setBackground(MyColor.subColor);
+		ImageIcon mainimg = CommonMethod.changeImgSize("images/logo.png", 200, 60);
+		JLabel logolabel = new JLabel(mainimg);
+		header.setLayout(new BorderLayout());
+		header.add(logolabel, BorderLayout.CENTER);
+		header.setLocation(100, 300);
+		
+		ImageIcon bibibbab = CommonMethod.changeImgSize("images/bibibab.jpg", 500, 300);
+		JLabel body = new JLabel(bibibbab);
+		body.setSize(500, 500);
+		
+		JPanel footer = new JPanel();
+		footer.setBackground(MyColor.subColor);
+		footer.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 80));
+		
+		add(header);
+		add(body);
+		add(footer);
+		
+		MyBorderButton koreanBtn = new MyBorderButton("한 국 어");
+		MyBorderButton englishBtn = new MyBorderButton("English");
+		koreanBtn.setMargin(new Insets(0, 0, 100, 100));
+		
+		koreanBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SetLanguage().setKorean();
+				new Main().change("into");
+//				setVisible(false);
+				}
+			});
+		
+		englishBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SetLanguage().setEnglish();
+				new Main().change("main");
+				setVisible(false);
+				}
+			});
+		
+		footer.add(koreanBtn);
+		footer.add(englishBtn);
+		}
+	
+	public void changeDisplay() {
+		
+	}
+//	public class MyFullImgPanel extends JPanel {
+//		public MyFullImgPanel(String imgpath) {
+//			ImageIcon imgicon = new ImageIcon(imgpath);
+//			Image img = imgicon.getImage();  //ImageIcon을 Image로 변환.
+//		}
+//		public void paintComponent(Graphics g) {
+//			super.paintComponent(g);
+//			
+//			g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+//		}
+//	}
+}

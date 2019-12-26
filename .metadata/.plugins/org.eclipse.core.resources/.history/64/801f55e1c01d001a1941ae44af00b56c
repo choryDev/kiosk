@@ -1,0 +1,18 @@
+package term2018;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.*;
+
+public class Ex01 {
+	public static void main(String[] args) {
+		ArrayList<String> aList =  new ArrayList<String>(10); // 초기 용량이 10인 ArrayList aList 객체 생성
+//		aList.add("Java");  // aList의 맨 끝에 "Java" 삽입
+//		aList.add("C++"); // aList의 맨 앞에 "C++" 삽입
+		System.out.println(aList.size()); // aList에 현재 삽입된 개수 출력
+		aList.remove(aList.size()-1); // aList의 마지막에 있는 문자열 삭제
+	}
+}

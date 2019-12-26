@@ -1,0 +1,52 @@
+package term2018;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Scanner;
+import java.util.Vector;
+
+import javax.swing.*;
+class KeyEventSize extends JFrame{
+    JPanel contentPane = new JPanel();
+    JLabel la = new JLabel("Love Java");
+  
+    KeyEventSize(){
+        this.setTitle("+,-키로 크기조정");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //la.setFont(new Font("Arial", Font.PLAIN, 10));
+        this.setContentPane(contentPane);
+        contentPane.addKeyListener(new KeyListener(){
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+              int size = la.getFont().getSize();
+                int keyCode = e.getKeyCode();
+                if(keyCode==KeyEvent.VK_EQUALS){ 
+                    la.setFont(new Font("Arial", Font.PLAIN, size+5));
+                }        
+                else if(keyCode==KeyEvent.VK_MINUS){
+                    if(size==5){
+                        la.setFont(new Font("Arial", Font.PLAIN, size));
+                    }
+                    else
+                        la.setFont(new Font("Arial", Font.PLAIN, size-5));
+                }    
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            } 
+        });
+        contentPane.add(la);
+        
+        this.setSize(300,200);
+        this.setVisible(true);
+        contentPane.requestFocus();
+    }
+}
+public class Ex01 {
+    public static void main(String[] args) {
+        new KeyEventSize();
+    }   
+}

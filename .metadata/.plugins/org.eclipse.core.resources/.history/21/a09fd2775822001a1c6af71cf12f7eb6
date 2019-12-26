@@ -1,0 +1,49 @@
+package display;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import common.CommonMethod;
+import common.MyColor;
+
+public class LoadingDisplay extends JPanel {
+	JLabel mascot1, mascot2, mascot3 = null;
+	
+	public LoadingDisplay(){
+		setBackground(MyColor.mainColor);
+		setLayout(null);
+		ImageIcon macotimg = CommonMethod.changeImgSize("images/mascot.png", 160, 128); //이미지 크기 바꿔주기 위한 함수
+		mascot1 = new JLabel(macotimg);
+		mascot2 = new JLabel(macotimg);
+		mascot3 = new JLabel(macotimg);
+		add(mascot1);
+		add(mascot2);
+		add(mascot3);
+		setSize(920, 800);
+	}
+	
+	public class ThreadTest extends Thread{
+	    public void run(){
+	        // 인터럽트 됬을때 예외처리
+	        try{
+	        	while(true) {
+		            for(int i = 110 ; i > 20; --i){//마스코트가 뛰는 쓰레드
+		                Thread.sleep(8);
+		                mascot1.setBounds(110, i, 160, 128);//절대값 위치 
+		                mascot2.setBounds(310, 110 + i, 160, 128);//절대값 위치 
+		                mascot3.setBounds(610, i, 160, 128);//절대값 위치 
+		            }
+		            for(int i = 20 ; i < 110; i++){//마스코트가 앉는 쓰레드
+		                Thread.sleep(8);
+		                mascot1.setBounds(110, i, 160, 128);//절대값 위치 
+		                mascot2.setBounds(310, 110 - i, 160, 128);//절대값 위치 
+		                mascot3.setBounds(610, i, 160, 128);//절대값 위치 
+		            }
+	        	}
+	        }catch(InterruptedException e){
+	            System.out.println(e);
+	        }
+	    }
+	}
+}

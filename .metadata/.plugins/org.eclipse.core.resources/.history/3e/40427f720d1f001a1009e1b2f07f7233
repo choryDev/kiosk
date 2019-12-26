@@ -1,0 +1,36 @@
+package term2018;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class Ex01 extends JFrame {
+	public Ex01() {
+		super("+,- 키로 폰트 크기 조절");
+		setLayout(new FlowLayout());
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		JLabel label = new JLabel("Love Java");
+		label.setFont(new Font("TimesRoman", Font.PLAIN, 10)); // 10 픽셀 크기		
+		               ①                  {  //레이블에 키리스너 등록
+			                    ②                {  //키를 눌렀을 때 
+				                   ③              {  //+ 키를 눌렀다면
+					JLabel la = (JLabel)e.getSource();
+					Font f = la.getFont();
+					int size = f.getSize();
+					la.setFont(new Font("TimesRoman", Font.PLAIN, size+5)); 						}
+				             ④                  {  // -키가 눌렀다면
+					JLabel la = (JLabel)e.getSource();
+					Font f = la.getFont();
+					int size = f.getSize();
+					            ⑤           ; //글자의 크기가 5보다 작다면 
+					la.setFont(new Font("TimesRoman", Font.PLAIN, size-5)); 					
+				}				
+			}
+		});
+		add(label);
+		setSize(300,150);
+		setVisible(true);
+		label.requestFocus();
+	}
+	static public void main(String [] args) {
+		new Ex01();
+	}
+}

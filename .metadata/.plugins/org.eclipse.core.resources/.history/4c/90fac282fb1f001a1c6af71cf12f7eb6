@@ -1,0 +1,28 @@
+package term2018;
+import javax.swing.*;
+
+import java.awt.event.*;
+import java.io.*;
+import java.awt.*;
+
+public class Ex01 extends JFrame {
+	JTextField tf = new JTextField(10); 
+	public Ex01() {
+		super("Focus Practice Frame");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(new FlowLayout());
+		add(new JLabel("입력한 후 다른 창에 마우스 클릭하면 대문자로 변합니다."));
+		add(tf);
+		tf.addFocusListener(new FocusAdapter() { //텍스트필트에 포커스 리스너 등록
+			public void focusLost(FocusEvent e) {
+				JTextField t = (JTextField)e.getSource();
+				t.setText(t.getText().toUpperCase());//대문자로 바꿈
+			}
+		});
+		setSize(400,100);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new Ex01();
+	}
+}

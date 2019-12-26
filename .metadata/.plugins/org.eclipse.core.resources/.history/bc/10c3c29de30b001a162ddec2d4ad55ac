@@ -1,0 +1,70 @@
+package bottomBillPane;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
+
+import common.BillObject;
+import common.MenuStructor;
+import common.MyColor;
+import common.SetLanguage;
+import component.MyButton;
+import component.MyButton;
+import main.Main;
+
+public class BottomBillDisplay extends JPanel {
+	Main root; //버튼을 누르면 화면을 바꿔주기 위해서
+	JPanel btnWrap = new JPanel();
+	static JPanel scrollPaneBase = new JPanel();
+	JPanel billInfo = new JPanel();
+	JScrollPane scrollPane = new JScrollPane(scrollPaneBase); //감싸줄 스크롤 펜
+	BillObject billObject = new BillObject();
+	
+	public BottomBillDisplay(Main root) {
+		this.root = root;
+		setBackground(MyColor.subColor);
+		setLayout(new BorderLayout());
+		
+		scrollPaneBase.setLayout(new BoxLayout(scrollPaneBase, BoxLayout.Y_AXIS));
+		scrollPaneBase.setBackground(MyColor.subColor);
+
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
+		MyButton nextBtn = new MyButton("다음 단계", "크게");
+		MyButton orderBtn = new MyButton("주문하기", "크게");
+		btnWrap.setBackground(MyColor.mainColor);
+		btnWrap.setLayout(new GridLayout(2, 1, 30, 30));
+		btnWrap.add(nextBtn);
+		btnWrap.add(orderBtn);
+		
+		orderBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				root.changeTakeOutDisplay();
+				}
+			});
+		
+		add(new BottomBillItem("해더"), "North");
+		add(scrollPane, "Center");
+		add(btnWrap, "East");
+		setSize(720, 200);
+		setLocation(0, 550);
+		setVisible(true);
+	}
+	
+	public void changeDisplay(MenuStructor getItem) {
+		scrollPaneBase.add(new BottomBillItem(getItem));			
+		revalidate();
+		repaint();
+	}
+}

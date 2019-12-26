@@ -1,0 +1,46 @@
+package menudisplayPackage;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import common.CommonMethod;
+import common.MyColor;
+
+public class MenuItemDisplay extends JPanel {
+	public MenuItemDisplay(String getItem) {
+		
+		setLayout(new BorderLayout());
+		
+		ImageIcon mainimg = CommonMethod.changeImgSize("images/logo.png", 160, 150);
+		JPanel descripPanel = new JPanel();
+		
+		JLabel image = new JLabel(mainimg);
+		JLabel title = new JLabel();
+		JLabel price = new JLabel();
+
+		descripPanel.setBackground(Color.yellow);
+		descripPanel.setPreferredSize(new Dimension(160, 50));
+		
+		title.setText(getItem);
+		price.setText(getItem);
+		
+		title.setFont(CommonMethod.myfont("중간"));
+		price.setFont(CommonMethod.myfont("작게"));
+		
+		title.setForeground(Color.DARK_GRAY);
+		price.setForeground(Color.DARK_GRAY);
+		
+		
+		add(image, "Center");
+		add(descripPanel, "South");
+		//add(price);
+		setBackground(MyColor.subColor);
+		setPreferredSize(new Dimension(173, 228));
+		setVisible(true);
+	}
+}

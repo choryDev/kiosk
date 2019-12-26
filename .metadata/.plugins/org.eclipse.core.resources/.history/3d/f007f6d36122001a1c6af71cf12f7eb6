@@ -1,0 +1,81 @@
+package display;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import common.CommonMethod;
+import common.MyColor;
+import component.MyBorderButton;
+import display.IntroDisplay.ThreadTest;
+
+public class SeatDisplay extends JPanel {
+	
+	JLabel macot = null;
+	public ThreadTest th = new ThreadTest();
+	JPanel centerP = null;
+	
+	JPanel topSeat = null;
+	JPanel centerSeat = null;
+	JPanel westSeat = null;
+	JPanel eastSeat = null;
+	
+	public SeatDisplay() {
+		setLayout(new BorderLayout());
+		JPanel header = new JPanel();
+		header.setBackground(MyColor.mainColor);
+		header.setLayout(null);
+		ImageIcon macotimg = CommonMethod.changeImgSize("images/mascot.png", 160, 128); //이미지 크기 바꿔주기 위한 함수
+		macot = new JLabel(macotimg);
+		JLabel headerText = new JLabel("자리를 선택해 주세요");
+		headerText.setFont(CommonMethod.myfont("제목"));
+		headerText.setBounds(200, 40, 700, 200);
+		headerText.setForeground(MyColor.subColor);
+		header.add(macot);
+		header.add(headerText);
+		header.setPreferredSize(new Dimension(920, 200));
+		th.start();//마스코트가 움직이는 쓰레드
+		
+		centerP = new JPanel();
+		
+		JPanel southP = new JPanel();
+		southP.setBackground(MyColor.mainColor);
+		southP.setLayout(new FlowLayout(FlowLayout.RIGHT)); //버튼을 둘 판넬 레이아웃 지정
+		MyBorderButton completeBtn = new MyBorderButton("선택 완료", "크게");
+		southP.add(completeBtn);
+		
+		eastSeat = new JPanel();
+		
+		
+		add(header, "North");
+		add(centerP, "Center");
+		add(southP, "South");
+		
+		setSize(920, 800);
+	}
+	public class ThreadTest extends Thread{
+	    public void run(){
+	        // 인터럽트 됬을때 예외처리
+	        try{
+	        	while(true) {
+		            for(int i = 110 ; i > 20; --i){//마스코트가 뛰는 쓰레드
+		                Thread.sleep(8);
+		                macot.setBounds(50, i, 160, 128);//절대값 위치 
+		            }
+		            Thread.sleep(20);
+		            for(int i = 20 ; i < 110; i++){//마스코트가 앉는 쓰레드
+		                Thread.sleep(8);
+		                macot.setBounds(50, i, 160, 128);//절대값 위치 
+		            }
+	        	}
+	        }catch(InterruptedException e){
+	            System.out.println(e);
+	        }
+	    }
+	}
+}

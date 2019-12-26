@@ -1,0 +1,36 @@
+package term2018;
+import javax.swing.*;
+
+import java.awt.event.*;
+import java.io.*;
+import java.awt.*;
+
+public class Ex01 extends JFrame {
+	public Ex01() {
+		super("클릭 연습 용 응용프로그램");
+		setLayout(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel label = new JLabel("C");
+		label.setLocation(100, 100);//100,100 위치로 이동 
+		label.setSize(20, 20);
+		label.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				JLabel la = (JLabel)e.getSource();
+				Container c = la.getParent();
+				int xBound = c.getWidth() - la.getWidth(); // 레이블의 폭 만큼 감소
+				int yBound = c.getHeight() - la.getHeight(); // 레이블의 높이 만큼 감소				
+				
+				int x = (int)Math.random() * xBound; //랜덤한 위치로 이동하는 x좌표
+				int y = (int)Math.random() * yBound; //랜덤한 위치로 이동하는 y좌표
+				la.setLocation(x, y); // 주어진 위치로 이동
+			}
+		});
+		add(label);
+		setSize(300,300);
+		setVisible(true);
+	}
+	static public void main(String [] args) {
+		new Ex01();
+	}
+}

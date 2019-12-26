@@ -1,0 +1,34 @@
+package main;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+
+import component.CommonComponent;
+import component.MyBorderButton;
+import display.IntroDisplay;
+import display.MainDisplay;
+
+import java.awt.*;
+
+public class Main extends JFrame {
+	public Main() {
+		
+		setTitle("Æä½ºÆ® ºñºö¹ä");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		IntroDisplay intro = new IntroDisplay();
+		
+//		add(new IntroDisplay());
+
+		JButton btn = new JButton("ddd");
+		add(btn);
+		add(new IntroDisplay());
+		setSize(720, 800);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new Main();
+	}
+}
+

@@ -1,0 +1,16 @@
+package term2018;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Vector;
+
+import javax.swing.*;
+
+public class Ex01 {
+	public static void main(String[] args){
+		Vector<Integer> v = new Vector<Integer>(3); //백터는  추가가 될 때 마다 용량이 2배가 된다
+		for(int i=10; i<50; i++)
+		     v.add(i);
+		System.out.println(v.capacity()); // 현재 용량 출력
+    }               //용량 48
+}

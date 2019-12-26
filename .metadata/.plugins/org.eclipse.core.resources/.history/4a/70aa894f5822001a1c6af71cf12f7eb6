@@ -1,0 +1,23 @@
+package display;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import common.CommonMethod;
+import common.MyColor;
+
+public class LoadingDisplay extends JPanel {
+	JLabel mascot1, mascot2, mascot3 = null;
+	
+	public LoadingDisplay(){
+		setBackground(MyColor.mainColor);
+		setLayout(null);
+		ImageIcon macotimg = CommonMethod.changeImgSize("images/mascot.png", 160, 128); //이미지 크기 바꿔주기 위한 함수
+		mascot1 = new JLabel(macotimg);
+		mascot2 = new JLabel(macotimg);
+		mascot3 = new JLabel(macotimg);
+		
+		setSize(920, 800);
+	}
+}

@@ -1,0 +1,18 @@
+package common;
+
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+public class CommonMethod {
+	
+	public static ImageIcon changeImgSize(String imgpath, int width,int height){//이미지 크기 바꿀 함수
+		//객체를 만들 필요가 없고 바로 써서 이미지 크기만 바꾸기 위해 static으로 선언
+		//파라미터(Object imgpath, int width,int height) 이미지경로 imgpath, 바꿀 가로 width, 바꿀 세로 height
+		ImageIcon imgicon = new ImageIcon(imgpath);
+		Image img = imgicon.getImage();  //ImageIcon을 Image로 변환.
+		Image newimg = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newimgicon = new ImageIcon(newimg); //Image로 ImageIcon 생성
+		return newimgicon;
+	}
+}

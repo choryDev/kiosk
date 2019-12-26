@@ -1,0 +1,19 @@
+package billTxt;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+public class BillTxt {
+	public BillTxt() {
+		try {
+			 OutputStream output = new FileOutputStream("./src/bill.txt");
+			 String str ="오늘 날씨는 아주 좋습니다ㅋㅋ.";
+			 byte[] by=str.getBytes();
+			 output.write(by);
+					
+		} catch (Exception e) {
+		         e.getStackTrace();
+		}
+	}
+}

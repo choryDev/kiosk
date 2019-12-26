@@ -1,0 +1,39 @@
+package main;
+
+import javax.swing.*;
+
+import display.IntroDisplay;
+import display.MainDisplay;
+import display.RootDisplay;
+
+import java.awt.*;
+
+public class Main extends JFrame{
+
+    public IntroDisplay intro = null;
+    public MainDisplay dis = null;
+	
+	Main(){
+		setTitle("µÇ¶ó");
+		intro = new IntroDisplay(this);
+		dis = new MainDisplay(this);
+		
+		add(intro);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setSize(720, 800);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new Main();
+	}
+
+	public void change() {
+        getContentPane().removeAll();
+        getContentPane().add(dis);
+        revalidate();
+        repaint();
+		
+	}
+}
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;data.txt&apos; to &apos;term2018/src/term2018&apos;&#x0D;&#x0A;- Original project: &apos;_pasted_code_&apos;&#x0D;&#x0A;- Destination element: &apos;term2018/src/term2018&apos;&#x0D;&#x0A;- Original element: &apos;data.txt&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="=term2018/src&lt;term2018" element1="src/data.txt" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1576398032201" units="0" version="1.0"/>
+</session>

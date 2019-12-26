@@ -1,0 +1,25 @@
+package billTxt;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class BillTxt {
+	public BillTxt() {
+		try {
+			long time = System.currentTimeMillis(); //시간을 구하는 함수
+			SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+			String strTime = dayTime.format(new Date(time));
+			System.out.println(strTime);
+			 OutputStream output = new FileOutputStream("./src/"+strTime+".txt");
+			 String str ="오늘 날씨는 아주 좋습니다ㅋㅋ.";
+			 byte[] by=str.getBytes();
+			 output.write(by);
+					
+		} catch (Exception e) {
+		         e.getStackTrace();
+		}
+	}
+}

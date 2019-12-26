@@ -1,0 +1,30 @@
+package term2018;
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.BufferedReader;
+import java.awt.*;
+
+public class Ex01 {
+	public static void main(String[] args){
+		System.out.println("--- 텍스트 파일 샘플은 data.txt .---\n");
+		BufferedReader br = null;
+		String s;
+		try {
+			//파일과 연결된 문자 입력스트림을 생성하고, 이것과 연결하는 문자입력 버퍼 스트림을 생성한다.
+            br = new BufferedReader(new FileReader("./data.txt"));
+;
+			while  ( 
+②
+ ) // 끝이 아닐 때까지 파일에서 1 line씩 읽어 s에 보관 
+					System.out.println(
+③
+); // 소문자 변환 후 출력
+			if (br != null)
+				br.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("파일을 찾을 수 없습니다.");
+		} catch (IOException e) {
+			System.out.println("입출력 오류가 발생했습니다.");
+		}
+	}
+}

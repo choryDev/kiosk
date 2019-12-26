@@ -1,0 +1,21 @@
+package term2018;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Scanner;
+import java.util.Vector;
+
+import javax.swing.*;
+public class Ex01 extends JFrame {
+	public Ex01() {
+		Container c = getContentPane(); // 컨텐트팬 알아내기
+		c.setLayout(new FlowLayout()); // 컨텐트팬에 FlowLayout 배치관리자 설정
+		c.setBackground(Color.YELLOW); // 컨텐트팬 배경색을 노란색으로 설정
+		c.add(new Button("click")); // 컨텐트팬에 "click" 버튼 달기
+		setSize(300,300);
+		setVisible(true);
+	}
+	public static void main(String[] args){
+		new Ex01();
+	}
+}

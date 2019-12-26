@@ -1,0 +1,20 @@
+package term2018;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Scanner;
+import java.util.Vector;
+
+import javax.swing.*;
+public class Ex01 {
+	public Ex01(){
+		JButton btn = new JButton("Hello");
+		btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Click");
+			}
+		});	
+	}
+}

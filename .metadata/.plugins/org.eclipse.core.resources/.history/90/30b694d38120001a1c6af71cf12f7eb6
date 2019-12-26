@@ -1,0 +1,24 @@
+package term2018;
+import javax.swing.*;
+
+import java.awt.event.*;
+import java.io.*;
+import java.awt.*;
+
+public class Ex01 {
+	public static void main(String[] args) {
+		InputStreamReader in = new InputStreamReader(System.in);// 콘솔과 연결된 입력 문자 스트림 생성
+		FileWriter fout = null;
+		int c;
+		try {
+			fout = new FileWriter("C:\tmp\test.txt"); // 파일과 연결된 출력 문자 스트림 생성
+			while ((c = in.read()) != -1){ // 파일의 끝을 읽을 때까지 읽음
+				System.out.println((char)c);// 콘솔에서 입력받은 문자 파일에 출력
+			}
+                       in.close();
+                       fout.close();
+			}catch (Exception e) {
+				System.out.println("입출력  오류") ;  //입출력 오류 출력
+			} 
+		}
+	}

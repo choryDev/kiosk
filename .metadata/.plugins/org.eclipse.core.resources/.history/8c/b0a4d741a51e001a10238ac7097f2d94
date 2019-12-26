@@ -1,0 +1,25 @@
+package term2018;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
+
+import javax.swing.*;
+
+public class Ex01 {
+	public static void main(String[] args){
+		Vector<Integer> v = new Vector<Integer>(3); //백터는  추가가 될 때 마다 용량이 2배가 된다
+		for(int i=10; i<50; i++) {
+		     v.add(i);
+			System.out.print("i의 갯수 : "+i);
+			System.out.println("  용량 : "+ v.capacity());
+		}
+    }               //용량 48
+}

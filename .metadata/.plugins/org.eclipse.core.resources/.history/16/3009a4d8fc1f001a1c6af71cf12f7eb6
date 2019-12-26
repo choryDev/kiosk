@@ -1,0 +1,41 @@
+package term2018;
+import javax.swing.*;
+
+import java.awt.event.*;
+import java.io.*;
+import java.awt.*;
+
+public class Ex01 extends JFrame {
+	Container contentPane;
+	Ex01() {
+		setTitle("fillXXX 사용  예제");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		contentPane = getContentPane();
+		
+		MyPanel panel = new MyPanel();
+		contentPane.add(panel, BorderLayout.CENTER);
+		setSize(200, 300);
+		setVisible(true);
+	}
+
+	class MyPanel extends JPanel {
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+
+			g.setColor(Color.GREEN);
+			g.fillRoundRect(50, 90, 100, 80, 15, 15);// 초록색 둥근사각형 칠하기
+			
+			g.setColor(Color.MAGENTA);
+			g.fillArc(50, 90, 90, 100, 40, 30);// 마젠타색 원호 칠하기, 
+			
+			g.setColor(Color.ORANGE);
+			int []x ={30,10,30,60};
+			int []y ={250,275,300,275};
+			g.fillPolygon(x, y, 4);// 오렌지색 다각형 칠하기
+		}
+	}
+	
+	public static void main(String [] args) {
+		new Ex01();
+	}
+} 

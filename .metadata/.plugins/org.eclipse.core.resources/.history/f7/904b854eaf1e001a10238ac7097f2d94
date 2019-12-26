@@ -1,0 +1,62 @@
+package term2018;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Scanner;
+import java.util.Vector;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+class MyModal extends JDialog {
+	JTextField tf = new JTextField(10);
+	JButton okButton = new JButton("OK");
+	public MyModal(JFrame parent, String title) {//생성자 작성, 35라인 참고할 것
+		super(parent, title);//모달로 지정
+		setLayout(new FlowLayout());//FlowLayout으로 지정
+		add(tf);
+		add(okButton);
+		setSize(200, 100);
+		okButton.addActionListener(new ActionListener() { //리스너 등록, 36라인과 같은 답이다.
+			public void actionPerformed(ActionEvent e) {//메소드 오버라이드
+				setVisible(false);//모달 창을 보이지 않게 설정
+			}
+		});
+	}
+	/* getInput() 메소드에 대한 주석--> 텍스트필드(tf) 창에 사용자가 입력한 문자열(getText)을 리턴한다.
+	입력된 내용이 없으면 null을 리턴한다. */
+	String getInput() { 
+		if(tf.getText().length() == 0) //if문
+			return null;
+		else //else
+			return tf.getText();
+	}
+ }//class MyModal 끝
+public class Ex01 extends JFrame{
+	MyModal dialog; // 다이얼로그의 레퍼런스
+	public Ex01() {
+		super("모델리스와 모달");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JButton btn = new JButton("모달상자 열기");
+		dialog = new MyModal(this, "Test Modal Dialog");//모달 다이얼로그 생성
+		btn.addActionListener(new ActionListener() { //리스너 등록, 14라인과 답 같음
+			public void actionPerformed(ActionEvent e) {//메소드 오버라이드
+				dialog.setVisible(true);; // 모달 다이얼로그 작동 시작
+				// 다이얼로그로부터 사용자가 입력한 문자열을 받아온다.
+				String text = dialog.getInput() ;//입력한 문자열을 받아온다.
+				if(text == null) 
+					return; // 입력한 문자열이 없는 경우
+				JButton btn = (JButton)e.getSource();
+				btn.setText(text);; // 입력한 문자열로 이 버튼의 문자열을 변경한다.
+			}
+		});
+		getContentPane().add(btn);
+		setSize(400,300);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new Ex01();
+	}
+}//class ModelessAndModal 끝
